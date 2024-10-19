@@ -10,10 +10,10 @@
 <body>
     <nav class="sidebar">
         <div class="navbar-logo">Quiz App</div>
-        <a href="#home">Home</a>
-        <a href="#quiz">Quiz</a>
-        <a href="#file:///C:/Users/szeyo/OneDrive/Desktop/E-Innovation/RescueReady/leaderboard/leaderboard.html">Leaderboard</a>
-        <a href="#about">About</a>
+        <a href="https://syy414.github.io/Rescue-Ready/RescueReady.html">Home</a>
+        <a href="https://syy414.github.io/Rescue-Ready/Quiz.html">Quiz</a>
+        <a href="https://syy414.github.io/Rescue-Ready/leaderboard.html">Leaderboard</a>
+        <a href="about">About</a>
     </nav>
     <div class="background">
         <div class="layer"></div>
@@ -31,8 +31,11 @@
             <div class="question-number" id="question-number">Question 1 of 20</div>
             <h2 id="question">Loading...</h2>
             <div class="options-container" id="answers">
-                <!-- Options will be generated here dynamically -->
-            </div>
+                <div class="option-card option" data-index="1">Option 1</div>
+                <div class="option-card option" data-index="2">Option 2</div>
+                <div class="option-card option" data-index="3">Option 3</div>
+                <div class="option-card option" data-index="4">Option 4</div>
+            </div>            
             
             <div id="score-container">Score: 0</div>
             <button id="back-btn" class="back-btn">Previous Question</button>
@@ -41,14 +44,12 @@
             <div id="view-leaderboard">
                 <a href="leaderboard.html" class="leaderboard-btn">
                     <span class="icon">🏆</span>
-                    View Leaderboard
                 </a>
-            </div>
+            </div>            
         </div>
     </div>
 
     <script src="Quiz.js"></script> <!-- Link your JS file -->
 </body>
 </html>
-
 
