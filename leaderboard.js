@@ -39,3 +39,4 @@ function displayLeaderboard() {
 
 // Initialize the leaderboard
 displayLeaderboard();
+
