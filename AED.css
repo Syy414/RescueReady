@@ -1,0 +1,149 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #e0f7fa, #b2ebf2);
+    color: #333;
+    text-align: center;
+  }
+  
+  header {
+    background-color: #009688;
+    padding: 2rem;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .aed-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  
+  .aed-container {
+    position: relative;
+    width: 300px;
+    height: 500px;
+    background-color: #eee;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .aed-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+  
+  .screen {
+    background-color: black;
+    color: green;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    height: 100px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Adjusted the Power button positioning */
+  .button-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .power {
+    background-color: green;
+    top: calc(100px + 15px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .power:hover {
+    background-color: #00796b; /* Darker shade on hover */
+  }
+  
+  .shock {
+    background-color: red;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .shock:hover {
+    background-color: #c62828; /* Darker shade on hover */
+  }
+  
+  .shock img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  /* Info Container */
+  .info-container {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+    flex-wrap: wrap;
+  }
+  
+  /* Info Box */
+  .info-box {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: calc(25% - 40px); /* Four boxes in a row */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden; /* To contain the pseudo-elements */
+    cursor: pointer; /* Change cursor to pointer on hover */
+  }
+  
+  .info-box:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .info-box h2 {
+    margin-bottom: 10px; /* Spacing below the title */
+  }
+  
+  .info-content {
+    display: none; /* Initially hide content */
+    margin-top: 10px;
+  }
+  
+  /* Show content on click */
+  .info-box.active .info-content {
+    display: block; /* Show content when active */
+  }
+  
+  footer {
+    background-color: #009688;
+    padding: 1rem;
+    color: white;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }

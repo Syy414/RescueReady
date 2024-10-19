@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive AED Guide</title>
+    <link rel="stylesheet" href="kitbox.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Automated External Defibrillator (AED)</h1>
+        <p>Life-saving device designed for nonmedical use</p>
+    </header>
+
+    <section class="aed-section">
+        <div class="aed-container">
+            <div class="aed-body">
+                <div class="screen">
+                    <p id="screen-text">Press Power to start</p>
+                </div>
+
+                <div class="pads">
+                    <div class="pad" id="pad-left"></div>
+                    <div class="pad" id="pad-right"></div>
+                </div>
+
+                <div class="button-circle power" id="power-btn">Power</div>
+                <div class="button-circle shock" id="shock-btn" disabled>
+                    <img src="shock-icon.png" alt="Shock Icon" class="shock-icon">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="info-container">
+        <div class="info-box" id="importance">
+            <h2>Why AEDs Are Important</h2>
+            <div class="info-content">
+                <ul>
+                    <li>AEDs significantly increase the chance of survival by restoring normal heart rhythm during sudden cardiac arrest.</li>
+                    <li>They administer electric shock through the chest wall to the heart and judge whether defibrillation is needed.</li>
+                    <li>AEDs are portable electronic devices designed for easy use by bystanders in emergencies.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-box" id="usage">
+            <h2>How to Use an AED</h2>
+            <div class="info-content">
+                <ul>
+                    <li>AEDs require no training, allowing bystanders to provide treatment during cardiac arrest in critical minutes before medical professionals arrive.</li>
+                    <li><strong>Steps:</strong></li>
+                    <ol>
+                        <li>Turn on the machine and wait for instructions.</li>
+                        <li>Remove clothing or wipe away sweat from the casualty’s chest if necessary.</li>
+                        <li>Attach the pads to the casualty’s chest based on the positions indicated on the pads (upper right side below collarbone and left side below casualty’s armpit).</li>
+                        <li>The machine will analyze the heart rhythm.</li>
+                        <li>If an abnormal rhythm is detected, the AED will charge and instruct you to push the shock button.</li>
+                        <li>Wait for dictated instructions to continue chest compressions until it's time to re-analyze.</li>
+                        <li>Repeat the steps until medical professionals arrive.</li>
+                    </ol>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-box" id="children">
+            <h2>Using AED on Children</h2>
+            <div class="info-content">
+                <ul>
+                    <li>Standard adult AEDs can be used on children over the age of 8 years.</li>
+                    <li>A pediatric AED or a standard machine with pediatric pads is suitable for children between 1-8 years old.</li>
+                    <li>If neither is available, standard AED pads can be used, with the first pad placed in the center of the child’s back and the second pad on the center of the child’s chest. Ensure both pads are vertical.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-box" id="emergency">
+            <h2>When Help Arrives</h2>
+            <div class="info-content">
+                <ul>
+                    <li>Provide information to the emergency services:</li>
+                    <li>Casualty’s present status</li>
+                    <li>Number of shocks delivered</li>
+                    <li>Length of time the casualty collapsed</li>
+                    <li>Any relevant history, if known</li>
+                </ul>
+                <p>If the casualty recovers at any point, leave the AED pads attached to their chest.</p>
+                <p>Ensure any used materials from the AED cabinet are disposed of as clinical waste.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="kitbox.js"></script>
+</body>
+</html>
