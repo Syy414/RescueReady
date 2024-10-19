@@ -1,23 +1,36 @@
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
+/* Color Variables */
+:root {
+    --primary-color: #6200ea;
+    --secondary-color: #03dac5;
+    --hover-color: #018786;
+    --background-color: #f0f4f8;
+    --card-background: #ffffff;
+    --option-color-1: #ff6f00; /* Bright Orange */
+    --option-color-2: #42a5f5; /* Light Blue */
+    --option-color-3: #66bb6a; /* Light Green */
+    --option-color-4: #ab47bc; /* Purple */
+}
+
 /* 3D Background */
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #e3f2fd, #f0f4f8);
+    background: linear-gradient(135deg, var(--background-color), #e3f2fd);
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    flex-direction: column; /* Allow stacking of elements */
+    justify-content: flex-start; /* Align items to the top */
     margin: 0;
     perspective: 1000px;
-    overflow: hidden;
-    padding-top: 70px; /* Adjust based on navbar height */
+    overflow-x: hidden; /* Hide horizontal overflow */
+    padding-top: 20px; /* Adjust based on navbar height */
+    animation: gradientAnimation 10s ease infinite; /* Animated background */
 }
 
 .background {
     position: relative;
-    height: 100vh;
+    min-height: 100vh; /* Ensure it covers at least the viewport height */
     overflow: hidden;
 }
 
@@ -44,7 +57,7 @@ body {
     left: 0; /* Align to the left */
     height: 100%; /* Full height */
     width: 200px; /* Fixed width for sidebar */
-    background-color: #6200ea; /* Background color */
+    background-color: var(--primary-color); /* Background color */
     padding: 20px; /* Padding for spacing */
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
     z-index: 1000; /* Stay above other elements */
@@ -66,37 +79,60 @@ body {
     background-color: rgba(255, 255, 255, 0.1); /* Background color on hover */
 }
 
-/* Fixed-Size Quiz Container */
+/* Base styles for the quiz container */
 .quiz-container {
-    background-color: #ffffff;
+    background-color: #ffffff; /* Same background color as leaderboard */
     border-radius: 15px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     padding: 30px;
     text-align: center;
     width: 1000px; /* Fixed width */
     height: 1000px; /* Fixed height */
-    margin: 0 auto; /* Centering */
+    margin: 0 auto; /* Centering with margin matching leaderboard */
     overflow-y: auto; /* Allow scrolling if content overflows */
-    transform: rotateY(5deg);
-    animation: fadeIn 0.5s ease-in;
     z-index: 2; /* Keep it above background elements */
+    animation: fadeIn 0.5s ease-in;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* This ensures that the content fills vertical space */
+    justify-content: space-between; /* Ensures that content fills vertical space */
 }
 
-/* Body to ensure alignment */
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #e3f2fd, #f0f4f8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    perspective: 1000px;
-    overflow: hidden;
-    padding: 0; /* Remove padding to avoid unnecessary space */
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .quiz-container {
+        width: 90%; /* Make it more flexible */
+        margin: 10px auto; /* Center with margin */
+        height: auto; /* Allow height to adjust based on content */
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+
+    /* Adjust question container and button sizes */
+    .question-container {
+        height: auto; /* Allow height to adjust based on content */
+        margin: 5px 0; /* Less margin for mobile */
+    }
+
+    .option-container {
+        gap: 30px; /* Reduce gap between buttons on mobile */
+    }
+
+    .option-btn {
+        padding: 12px; /* Smaller padding for mobile */
+        font-size: 14px; /* Smaller font size for mobile */
+    }
+
+    h2 {
+        font-size: 24px; /* Adjust heading size */
+        margin: 15px 0; /* Less margin */
+    }
+}
+
+/* Additional styles for layout consistency */
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%; /* Sidebar full width on small screens */
+        height: auto; /* Allow height to adjust */
+    }
 }
 
 /* Fade-in animation for the quiz container */
@@ -133,7 +169,7 @@ body {
 
 /* Fixed size for questions */
 .question-container {
-    width: 90%; /* Uniform width for all questions */
+    width: 100%; /* Uniform width for all questions */
     height: 120px; /* Fixed height for all questions */
     display: flex; /* Use flexbox for centering */
     justify-content: center; /* Center horizontally */
@@ -155,35 +191,90 @@ body {
 h2 {
     font-size: 28px;
     margin: 20px 0;
-    color: #6200ea; /* More vibrant header color */
+    color: var(--primary-color); /* More vibrant header color */
 }
 
-.options-container {
-    margin-bottom: 20px;
+.option-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px; /* Increased space between buttons */
+    align-items: stretch; /* Ensure all buttons take full width */
 }
 
-.option {
-    background-color: #6200ea;
-    color: white;
+.option-btn {
+    margin: 10px 0; /* Adjust as needed for spacing above and below each button */
+}
+
+.option-btn {
+    background-color: #5e9bf1; /* Pink background */
+    color: navy; /* White text */
     border: none;
-    border-radius: 8px;
+    border-radius: 15px; /* Rounded corners */
     padding: 15px;
-    margin: 10px 0; /* Added spacing for a better look */
+    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
+    transition: background-color 0.3s ease;
+    height: 60px; /* Fixed height for all options */
+    width: 100%; /* Full width for button */
 }
 
+.option-btn:hover {
+    background-color: #d9e437; /* Dark yellow on hover */
+}
+
+.option-btn.correct {
+    background-color: #4CAF50; /* Green for correct */
+}
+
+.option-btn.wrong {
+    background-color: #f44336; /* Red for wrong */
+}
+
+/* Small number indicator in each option */
+.option::before {
+    content: attr(data-index); /* Display the option number */
+    position: absolute;
+    top: 15px; /* Slightly lower for better visibility */
+    left: 15px; /* Move to left for aesthetic */
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+    color: white;
+    font-size: 18px; /* Font size for the number */
+    padding: 8px; /* Increased padding for better click area */
+    border-radius: 50%; /* Circular shape */
+    transition: transform 0.3s; /* Transition for scaling */
+}
+
+/* Scale up number indicator on hover */
+.option:hover::before {
+    transform: scale(1.2); /* Slightly enlarge the number */
+}
+
+/* Adding a gradient background on hover */
 .option:hover {
-    background-color: #3700b3;
-    transform: translateY(-3px); /* Slight lift effect on hover */
+    background: linear-gradient(135deg, #ff5722, #ff8a00); /* Gradient on hover */
 }
 
+/* Ensuring consistent layout on small screens */
+@media (max-width: 768px) {
+    .options-container {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
+
+    .quiz-container {
+        width: 90%; /* Adjust width for smaller screens */
+        height: auto; /* Auto height for flexibility */
+    }
+
+    .sidebar {
+        width: 150px; /* Reduce width */
+    }
+}
+
+/* Next and Reset Buttons */
+.back-btn,
 .next-btn,
 .reset-btn {
-    background-color: #03dac5;
+    background-color: var(--secondary-color);
     color: white;
     border: none;
     border-radius: 8px;
@@ -194,18 +285,34 @@ h2 {
     width: 100%;
 }
 
+.back-btn:hover,
 .next-btn:hover,
 .reset-btn:hover {
-    background-color: #018786;
+    background-color: var(--hover-color);
     transform: translateY(-3px); /* Slight lift effect on hover */
 }
 
-#score-container {
-    font-weight: bold;
-    margin: 20px 0;
-    font-size: 24px; /* Increased score font size */
+.leaderboard-btn {
+    display: inline-flex; /* Make it a flex container */
+    justify-content: center; /* Center icon */
+    align-items: center; /* Center vertically */
+    width: 60px; /* Width for the icon button */
+    height: 60px; /* Height for the icon button */
+    background-color: transparent; /* Transparent background */
+    border: 2px solid transparent; /* Initial border */
+    border-radius: 50%; /* Make it circular */
+    color: #6200ea; /* Icon color */
+    font-size: 24px; /* Adjust icon size */
+    transition: border-color 0.3s, transform 0.3s; /* Smooth transition for effects */
+    cursor: pointer; /* Change cursor on hover */
 }
 
+.leaderboard-btn:hover {
+    border-color: #6200ea; /* Outline color on hover */
+    transform: scale(1.1); /* Slightly enlarge the icon on hover */
+}
+
+/* Modal */
 .modal {
     position: fixed;
     top: 0;
@@ -216,51 +323,44 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Ensure the modal appears above other elements */
+    z-index: 100; /* Ensure it is above all other content */
 }
 
 .modal-content {
-    background: white;
+    background-color: white;
     padding: 30px;
-    border-radius: 10px; /* More rounded corners */
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Shadow for depth */
-    width: 90%; /* Responsive width */
-    max-width: 400px; /* Maximum width for larger screens */
+    animation: modalFadeIn 0.3s ease-in-out; /* Modal fade-in effect */
 }
 
-.modal-content h2 {
-    margin-bottom: 20px; /* Space between the title and input */
-    font-family: 'Arial', sans-serif; /* Consistent font style */
-    font-size: 24px; /* Font size for title */
-    color: #333; /* Dark color for title */
+.modal h2 {
+    color: var(--primary-color); /* Keep the modal heading consistent */
 }
 
-.modal-content input {
-    width: 100%; /* Full width input */
-    padding: 10px;
-    border: 2px solid #007bff; /* Blue border */
-    border-radius: 5px; /* Rounded input corners */
-    font-size: 16px; /* Font size for input */
-    margin-bottom: 20px; /* Space below input */
-    outline: none; /* Remove outline */
+/* Animation keyframes */
+@keyframes gradientAnimation {
+    0% { background-color: var(--background-color); }
+    50% { background-color: #e3f2fd; }
+    100% { background-color: var(--background-color); }
 }
 
-.modal-content input:focus {
-    border-color: #0056b3; /* Darker border color on focus */
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.modal-content button {
-    background-color: #007bff; /* Blue button */
-    color: white; /* White text color */
-    padding: 10px 20px; /* Padding for button */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded button corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    font-size: 16px; /* Font size for button */
-    transition: background-color 0.3s; /* Transition for hover effect */
+.emoji-animation {
+    position: absolute;
+    font-size: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    transition: opacity 1s ease;
 }
 
-.modal-content button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+.fade-out {
+    opacity: 0;
 }
