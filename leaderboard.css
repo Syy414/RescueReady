@@ -132,3 +132,41 @@ body {
         transform: translateY(0);
     }
 }
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .quiz-container {
+        width: 90%; /* Make it more flexible */
+        margin: 10px auto; /* Center with margin */
+        height: auto; /* Allow height to adjust based on content */
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+
+    /* Adjust question container and button sizes */
+    .question-container {
+        height: auto; /* Allow height to adjust based on content */
+        margin: 5px 0; /* Less margin for mobile */
+    }
+
+    .option-container {
+        gap: 30px; /* Reduce gap between buttons on mobile */
+    }
+
+    .option-btn {
+        padding: 12px; /* Smaller padding for mobile */
+        font-size: 14px; /* Smaller font size for mobile */
+    }
+
+    h2 {
+        font-size: 24px; /* Adjust heading size */
+        margin: 15px 0; /* Less margin */
+    }
+}
+
+/* Additional styles for layout consistency */
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%; /* Sidebar full width on small screens */
+        height: auto; /* Allow height to adjust */
+    }
+}
