@@ -71,25 +71,25 @@
   }
   
   .power {
-    background-color: green;
+    background-color: #05904d;
     top: calc(100px + 15px);
     left: 50%;
     transform: translateX(-50%);
   }
   
   .power:hover {
-    background-color: #00796b; /* Darker shade on hover */
+    background-color: #05904d; /* Darker shade on hover */
   }
   
   .shock {
-    background-color: red;
+    background-color: #c10505;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
   }
   
   .shock:hover {
-    background-color: #c62828; /* Darker shade on hover */
+    background-color: #c10505; /* Darker shade on hover */
   }
   
   .shock img {
