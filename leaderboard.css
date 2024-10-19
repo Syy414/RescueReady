@@ -4,6 +4,15 @@
 /* Global Font Style */
 body {
     font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--background-color), #e3f2fd);
+    display: flex;
+    flex-direction: column; /* Allow stacking of elements */
+    justify-content: flex-start; /* Align items to the top */
+    margin: 0;
+    perspective: 1000px;
+    overflow-x: hidden; /* Hide horizontal overflow */
+    padding-top: 20px; /* Adjust based on navbar height */
+    animation: gradientAnimation 10s ease infinite; /* Animated background */
 }
 
 /* Sidebar styles */
@@ -66,7 +75,7 @@ body {
 .leaderboard-table th,
 .leaderboard-table td {
     border: 1px solid #e0e0e0;
-    padding: 15px;
+    padding: 20px;
     text-align: center;
     transition: background-color 0.3s;
     font-size: 16px;
