@@ -68,9 +68,8 @@ const kbatQuestions = [
 // Select 15 random basic questions and 5 random KBAT questions
 let selectedBasicQuestions = shuffleArray(allQuestions).slice(0, 15);
 let selectedKbatQuestions = shuffleArray(kbatQuestions).slice(0, 5);
-
-// Combine the two sets of questions and shuffle them
 let selectedQuestions = shuffleArray(selectedBasicQuestions.concat(selectedKbatQuestions));
+
 let currentQuestionIndex = 0;
 let score = 0;
 
@@ -103,8 +102,8 @@ function showQuestion(question) {
 // Check the user's answer
 function checkAnswer(question, selectedAnswer) {
     const correctAnswer = question.correct;
-
     const buttons = answersElement.querySelectorAll('.option-btn');
+    
     buttons.forEach((button, index) => {
         button.disabled = true; // Disable buttons once an answer is selected
         if (index === correctAnswer) {
@@ -122,15 +121,6 @@ function checkAnswer(question, selectedAnswer) {
         vibrate(); // Vibrate on wrong answer
     }
     scoreElement.innerText = `Score: ${score}`;
-}
-
-// Function to move to the previous question
-function prevQuestion() {
-    if (currentQuestionIndex > 0) {
-        currentQuestionIndex--;
-        showQuestion(selectedQuestions[currentQuestionIndex]);
-    }
-    updateProgressBar();
 }
 
 // Update the progress bar function
@@ -156,15 +146,7 @@ prevButton.onclick = () => {
 
 // Reset button functionality
 resetButton.addEventListener('click', function() {
-    currentQuestionIndex = 0;
-    score = 0;
-    scoreElement.innerText = "Score: 0";
-    nextButton.disabled = false;
-    resetButton.style.display = 'none'; // Hide reset button
-    selectedBasicQuestions = shuffleArray(allQuestions).slice(0, 15); // Shuffle and select 15 questions
-    selectedKbatQuestions = shuffleArray(kbatQuestions).slice(0, 5); // Shuffle and select 5 KBAT questions
-    selectedQuestions = shuffleArray(selectedBasicQuestions.concat(selectedKbatQuestions)); // Combine and shuffle
-    showQuestion(selectedQuestions[currentQuestionIndex]);
+    resetQuiz();
 });
 
 // Move to the next question
@@ -176,26 +158,42 @@ function nextQuestion() {
         questionElement.innerText = "Quiz Complete! Final Score: " + score;
         nextButton.disabled = true;
         resetButton.style.display = 'block'; // Show reset button when quiz is over
+        promptForUsername(); // Prompt for username after completing the quiz
     }
-
     updateProgressBar(); // Update the progress bar after moving to the next question
+}
+
+// Function to move to the previous question
+function prevQuestion() {
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        showQuestion(selectedQuestions[currentQuestionIndex]);
+    }
+    updateProgressBar();
+}
+
+// Reset quiz function
+function resetQuiz() {
+    currentQuestionIndex = 0;
+    score = 0;
+    scoreElement.innerText = "Score: 0";
+    nextButton.disabled = false;
+    resetButton.style.display = 'none'; // Hide reset button
+    selectedBasicQuestions = shuffleArray(allQuestions).slice(0, 15); // Shuffle and select 15 questions
+    selectedKbatQuestions = shuffleArray(kbatQuestions).slice(0, 5); // Shuffle and select 5 KBAT questions
+    selectedQuestions = shuffleArray(selectedBasicQuestions.concat(selectedKbatQuestions)); // Combine and shuffle
+    showQuestion(selectedQuestions[currentQuestionIndex]);
 }
 
 // Emoji animation function
 function showEmojiAnimation(emoji) {
     const emojiContainer = document.createElement('div');
     emojiContainer.innerHTML = emoji;
-    emojiContainer.style.position = 'absolute';
-    emojiContainer.style.fontSize = '50px';
-    emojiContainer.style.top = '50%';
-    emojiContainer.style.left = '50%';
-    emojiContainer.style.transform = 'translate(-50%, -50%)';
-    emojiContainer.style.opacity = 1;
-
+    emojiContainer.classList.add('emoji-animation'); // Use CSS class for styling
     document.body.appendChild(emojiContainer);
 
     setTimeout(() => {
-        emojiContainer.style.opacity = 0;
+        emojiContainer.classList.add('fade-out'); // Add fade-out effect via CSS
         setTimeout(() => {
             document.body.removeChild(emojiContainer);
         }, 1000);
@@ -209,12 +207,8 @@ function vibrate() {
     }
 }
 
-// Start the quiz by showing the first question
-showQuestion(selectedQuestions[currentQuestionIndex]);
-
 // Function to prompt the user for their username
 function promptForUsername() {
-    // Create a modal for username entry
     const modal = document.createElement('div');
     modal.classList.add('modal');
     modal.innerHTML = `
@@ -249,17 +243,5 @@ function saveScore(username) {
     alert("Score saved!"); // Optionally alert the user
 }
 
-// Move to the next question
-function nextQuestion() {
-    currentQuestionIndex++;
-    if (currentQuestionIndex < selectedQuestions.length) {
-        showQuestion(selectedQuestions[currentQuestionIndex]);
-    } else {
-        questionElement.innerText = "Quiz Complete! Final Score: " + score;
-        nextButton.disabled = true;
-        resetButton.style.display = 'block'; // Show reset button when quiz is over
-        promptForUsername(); // Prompt for username after completing the quiz
-    }
-
-    updateProgressBar(); // Update the progress bar after moving to the next question
-}
+// Start the quiz by showing the first question
+showQuestion(selectedQuestions[currentQuestionIndex]);
