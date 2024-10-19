@@ -296,13 +296,13 @@ h2 {
     display: inline-flex; /* Make it a flex container */
     justify-content: center; /* Center icon */
     align-items: center; /* Center vertically */
-    width: 60px; /* Width for the icon button */
-    height: 60px; /* Height for the icon button */
+    width: 120px; /* Width for the icon button */
+    height: 120px; /* Height for the icon button */
     background-color: transparent; /* Transparent background */
-    border: 2px solid transparent; /* Initial border */
-    border-radius: 50%; /* Make it circular */
+    border: 4px solid transparent; /* Initial border */
+    border-radius: 75%; /* Make it circular */
     color: #6200ea; /* Icon color */
-    font-size: 24px; /* Adjust icon size */
+    font-size: 30px; /* Adjust icon size */
     transition: border-color 0.3s, transform 0.3s; /* Smooth transition for effects */
     cursor: pointer; /* Change cursor on hover */
 }
