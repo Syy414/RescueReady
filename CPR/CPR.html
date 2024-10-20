@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CPR Steps with Modal</title>
+  <link rel="stylesheet" href="CPR.css">
+</head>
+<body>
+
+  <!-- Progress bar section -->
+  <div class="progress-bar-container">
+    <div id="progress-bar"></div>
+  </div>
+
+  <!-- DRSABC Cards -->
+  <section class="cpr-steps">
+    <h2>CARDIOPULMONARY RESUSCITATION (CPR)</h2>
+
+    <div class="drsabc-container">
+      <span class="drsabc-letter" id="danger" data-step="danger">D</span>
+      <span class="drsabc-letter" id="response" data-step="response">R</span>
+      <span class="drsabc-letter" id="shout" data-step="shout">S</span>
+      <span class="drsabc-letter" id="airway" data-step="airway">A</span>
+      <span class="drsabc-letter" id="breathing" data-step="breathing">B</span>
+      <span class="drsabc-letter" id="compression" data-step="compression">C</span>
+    </div>    
+  </section>
+
+  <!-- Modal for step details -->
+  <div id="stepModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3 id="modal-title"></h3>
+      <div id="modal-description"></div>
+
+      <!-- Image for the current step -->
+      <img id="modal-image" src="" alt="">
+      
+      <!-- Subsections for compression (expandable for "Compression" step) -->
+      <div id="compression-subsections" style="display: none;">
+        <div class="subsection-bar expandable-title">
+          <h4>CPR for an Adult</h4>
+        </div>
+        <div class="expandable-content">
+          <p>Chest compression (30 compressions)</p>
+          <p><strong>Location:</strong> Place one hand on the centre of the casualty's chest. Place the heel of your other hand on top of the first and interlock your fingers, keep your fingers off the casualty’s ribs.</p>
+          <p><strong>Rate:</strong> 100 - 120 compressions per minute</p>
+          <p><strong>Depth:</strong>  5 - 6 cm (2-2.5 inches)</p>
+          <p><strong>Recoil:</strong> Allow complete recoil of the chest after each compression</p>
+          <p>Minimise interruption on chest compression</p>
+          <p><strong>Rescue breathing (2 times):</strong> Open the victim’s airway using head-tilt and chin-lift method. Pinch the nostrils closed, allow their mouth to fall open. Take a breath, seal your lips over the casualty’s mouth, blow steadily until the chest rises. Maintaining the open airway, take your mouth away from the casualty’s. Look along the chest and watch it fall.</p>
+        </div>
+
+        <div class="subsection-bar expandable-title">
+          <h4>CPR for a Child (1 year - puberty)</h4>
+        </div>
+        <div class="expandable-content">
+          <p><strong>Give 5 initial rescue breaths before starting CPR</strong></p>
+          <p>Chest compression (30 compressions)</p>
+          <p><strong>Location:</strong> Place the heel of one hand ONLY on the centre of the chest.</p>
+          <p><strong>Rate:</strong> 100 - 120 compressions per minute</p>
+          <p><strong>Depth:</strong> ⅓ of the child’s chest depth</p>
+          <p><strong>Recoil:</strong> Allow complete recoil of the chest after each compression</p>
+          <p>Minimise interruption on chest compression</p>
+          <p><strong>Rescue breathing (2 times):</strong> Open the victim’s airway using the head-tilt/chin-lift method. Pinch the nostrils closed, allow their mouth to fall open. Take a breath, seal your lips over the casualty’s mouth, blow steadily until the chest rises. Maintaining the open airway, take your mouth away from the casualty’s. Look along the chest and watch it fall.</p>
+        </div>
+
+        <div class="subsection-bar expandable-title">
+          <h4>CPR for an Infant (&lt; 1 year)</h4>
+        </div>
+        <div class="expandable-content">
+          <p><strong>Give 5 initial rescue breaths before starting CPR</strong></p>
+          <p><strong>Do not use an AED on an infant</strong></p>
+          <p>Chest compression (30 compressions)</p>
+          <p><strong>Location:</strong> Place the tips of your index and middle finger on the center of the chest.</p>
+          <p><strong>Rate:</strong> 100 - 120 compressions per minute</p>
+          <p><strong>Depth:</strong> ⅓ of the child’s chest depth</p>
+          <p><strong>Recoil:</strong> Allow complete recoil of the chest after each compression</p>
+          <p>Minimise interruption on chest compression</p>
+          <p><strong>Rescue breathing (2 times):</strong> Open the infant’s airway using head-tilt / chin-lift method. Pinch the nostrils closed, allow their mouth to fall open. Take a breath, seal your lips over the casualty’s mouth, blow steadily until the chest rises. Maintaining the open airway, take your mouth away from the casualty’s. Look along the chest and watch it fall.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <audio id="clickSound" src="click_sound.mp3" preload="auto"></audio>
+
+  <script src="CPR.js"></script>
+</body>
+</html>
+  
