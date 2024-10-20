@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knife Cut Animation - Bleeding Types</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Background video styling */
+        #background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        /* Container for the knife effect */
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Knife image - initially hidden */
+        .knife {
+            display: none; /* Hide knife initially */
+            position: absolute;
+            top: -10%; /* Start above the screen */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10; /* On top of everything */
+            width: 80px; /* Adjust knife size */
+            height: auto;
+            transition: transform 0.4s ease, opacity 0.4s ease; /* Smooth transition for the knife */
+        }
+
+        /* Left and right parts of the page */
+        .half {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background-color: rgba(255, 225, 181, 0.9); /* Skin color with slight transparency */
+            z-index: 5; /* Behind the knife */
+            transition: transform 1.5s ease-in-out; /* Transition for opening effect */
+            display: flex; /* Enable flexbox for centering images */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            background-size: cover; /* Make background image cover the entire div */
+            background-position: center; /* Center the background image */
+        }
+
+        .half.left {
+            left: 0;
+            transform-origin: left;
+            background-image: url('skin.jpg'); /* Set your left image URL here */
+        }
+
+        .half.right {
+            right: 0;
+            transform-origin: right;
+            background-image: url('skin.jpg'); /* Set your right image URL here */
+        }
+
+        /* Button styling */
+        .button {
+            background-color: #D32F2F;
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 50px;
+            position: absolute;
+            z-index: 15; /* Above all */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .button:hover {
+            background-color: #B71C1C;
+        }
+
+        /* Bleeding topic content */
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 2s ease, transform 1s ease;
+            text-align: center; /* Center-align the text */
+            z-index: 1;
+            width: 80%;
+            color: #333;
+        }
+
+        .content h1 {
+            font-size: 42px;
+            color: #E64A19;
+            margin-bottom: 20px;
+        }
+
+        .content h2 {
+            font-size: 28px;
+            color: #ffffff;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .content p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Carousel styling */
+        .carousel {
+            display: none; /* Hidden by default */
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .carousel.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Indicators styling */
+        .indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+
+        .indicator {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .indicator.active {
+            background-color: #D32F2F; /* Active indicator color */
+        }
+
+        /* Navigation buttons */
+        .nav-button {
+            background-color: rgba(211, 47, 47, 0.8);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 50px;
+            position: absolute;
+            z-index: 15; /* Above all */
+            top: 50%;
+            transform: translateY(-50%);
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-button:hover {
+            background-color: rgba(211, 47, 47, 1);
+        }
+
+        .nav-button.previous {
+            left: 20px;
+        }
+
+        .nav-button.next {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Video -->
+    <video autoplay muted loop id="background-video">
+        <source src="blood.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="container" id="container">
+        <img src="knife.png" width="300px" height="300px" alt="Knife" class="knife" id="knife">
+        <button class="button" id="zip-button">Bleeding</button>
+        <div class="half left" id="left-half"></div>
+        <div class="half right" id="right-half"></div>
+        <div class="content" id="content">
+            <h1>Types of Bleeding</h1>
+            
+            <div class="carousel active" id="capillary-carousel">
+                <h2>Capillary Bleeding</h2>
+                <p>
+                    - Minor scrapes or cuts open small capillaries.<br>
+                    - Bleeding is slow and light in quantity.<br>
+                    - Body’s natural clotting mechanism usually stops it within minutes.
+                </p>
+            </div>
+
+            <div class="carousel" id="venous-carousel">
+                <h2>Venous Bleeding</h2>
+                <p>
+                    - Occurs from a deeper cut, potentially opening veins.<br>
+                    - Blood is dark red and flows steadily.<br>
+                    - Treatment: Apply direct pressure to slow and stop the bleeding.
+                </p>
+            </div>
+
+            <div class="carousel" id="arterial-carousel">
+                <h2>Arterial Bleeding</h2>
+                <p>
+                    - The most dangerous type of bleeding.<br>
+                    - Bright red blood spurts in rhythm with the heartbeat.<br>
+                    - Can lead to shock and may be fatal within minutes.<br>
+                    - Treatment: Apply firm pressure immediately to control bleeding.
+                </p>
+            </div>
+
+            <div class="carousel" id="severe-bleeding-aims-carousel">
+                <h2>Severe External Bleeding - Aims</h2>
+                <p>
+                    - To control bleeding<br>
+                    - To prevent and minimise the effect of shock<br>
+                    - To minimise infection<br>
+                    - To arrange urgent removal to hospital
+                </p>
+            </div>
+
+            <div class="carousel" id="severe-bleeding-cautions-carousel">
+                <h2>Severe External Bleeding - Cautions</h2>
+                <p>
+                    - Do not allow the casualty to eat or drink because an anaesthetic may be needed.<br>
+                    - Remove or cut away clothing to expose a wound if necessary.<br>
+                    - If the casualty is unresponsive, open the airway and check breathing.<br>
+                    - If there is an object embedded in the wound, do not apply direct pressure on the object.
+                </p>
+            </div>
+
+            <div class="carousel" id="severe-bleeding-treatments-carousel">
+                <h2>Severe External Bleeding - Treatments</h2>
+                <p>
+                    - Apply direct pressure over the wound with a sterile dressing.<br>
+                    - Elevate the wound if possible.<br>
+                    - If bleeding continues, apply a second dressing over the first.<br>
+                    - Monitor and record vital signs.
+                </p>
+            </div>
+        </div>
+
+        <!-- Indicators for the carousel -->
+        <div class="indicators" id="indicators">
+            <div class="indicator active" data-index="0"></div>
+            <div class="indicator" data-index="1"></div>
+            <div class="indicator" data-index="2"></div>
+            <div class="indicator" data-index="3"></div>
+            <div class="indicator" data-index="4"></div>
+            <div class="indicator" data-index="5"></div>
+        </div>
+
+        <!-- Navigation buttons -->
+        <button class="nav-button previous" id="prev-button">Previous</button>
+        <button class="nav-button next" id="next-button">Next</button>
+    </div>
+
+    <script>
+        const content = document.getElementById('content');
+        const carousels = document.querySelectorAll('.carousel');
+        const indicators = document.querySelectorAll('.indicator');
+        let currentIndex = 0;
+        let carouselInterval;
+
+        // Function to show the current carousel item
+        function showCarouselItem(index) {
+            carousels.forEach((carousel, i) => {
+                carousel.classList.remove('active');
+                indicators[i].classList.remove('active');
+            });
+
+            carousels[index].classList.add('active');
+            indicators[index].classList.add('active');
+        }
+
+        // Function to go to the next carousel item
+        function nextCarousel() {
+            currentIndex++;
+            if (currentIndex >= carousels.length) {
+                currentIndex = 0; // Loop back to the first item
+            }
+            showCarouselItem(currentIndex);
+        }
+
+        // Function to go to the previous carousel item
+        function previousCarousel() {
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = carousels.length - 1; // Loop back to the last item
+            }
+            showCarouselItem(currentIndex);
+        }
+
+        // Start automatic carousel transition
+        function startCarousel() {
+            carouselInterval = setInterval(nextCarousel, 4000); // Change every 4 seconds
+        }
+
+        // Pause the automatic carousel transition on user interaction
+        function pauseCarousel() {
+            clearInterval(carouselInterval);
+        }
+
+        // Event listeners for navigation buttons
+        document.getElementById('next-button').addEventListener('click', () => {
+            pauseCarousel(); // Pause automatic transition
+            nextCarousel(); // Show next carousel item
+            startCarousel(); // Restart automatic transition
+        });
+
+        document.getElementById('prev-button').addEventListener('click', () => {
+            pauseCarousel(); // Pause automatic transition
+            previousCarousel(); // Show previous carousel item
+            startCarousel(); // Restart automatic transition
+        });
+
+        document.getElementById('zip-button').addEventListener('click', function () {
+            const knife = document.getElementById('knife');
+            const leftHalf = document.getElementById('left-half');
+            const rightHalf = document.getElementById('right-half');
+            const button = document.getElementById('zip-button');
+
+            // Hide the button immediately after click
+            button.style.display = 'none';
+
+            // Show the knife
+            knife.style.display = 'block'; // Show knife
+            knife.style.transform = 'translateX(-50%) translateY(0)'; // Reset knife position
+
+            // Knife moves down to cut the page
+            setTimeout(() => {
+                knife.style.transform = 'translateX(-50%) translateY(100vh)'; // Knife moves off-screen
+            }, 0); // Start immediately
+
+            // Curtain effect: the page opens in two halves
+            setTimeout(() => {
+                leftHalf.style.transform = 'translateX(-100%)'; // Move left half left
+                rightHalf.style.transform = 'translateX(100%)'; // Move right half right
+            }, 400); // Delay for knife animation
+
+            // Knife disappears after opening
+            setTimeout(() => {
+                knife.style.opacity = '0'; // Fade out the knife
+            }, 1000); // After the opening
+
+            // Display the content after the page opens
+            setTimeout(() => {
+                content.style.opacity = '1'; // Make content visible
+                content.style.transform = 'translate(-50%, -40%)';
+
+                // Show the first section of the carousel
+                showCarouselItem(currentIndex);
+
+                // Start automatic carousel
+                startCarousel();
+            }, 2000); // Wait for the halves to finish opening
+        });
+    </script>
+</body>
+</html>
