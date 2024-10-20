@@ -1,0 +1,173 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #121212; /* Dark background */
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 1rem;
+}
+
+.header {
+    text-align: center;
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #ff5722, #ff8c00);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.header p {
+    font-size: 1.5rem;
+}
+
+.main-content {
+    padding: 3rem 1rem;
+}
+
+.recognition, .choking-procedures {
+    background-color: #2a2a2a; /* Card background color */
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    transition: background-color 0.3s ease;
+}
+
+.recognition h2, .choking-procedures h2 {
+    color: #ff5722; /* Highlight color */
+    text-align: center;
+}
+
+.obstruction, .card {
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+.obstruction.mild {
+    background-color: #333; /* Mild obstruction */
+}
+
+.obstruction.severe {
+    background-color: #ff5722; /* Severe obstruction highlight */
+    color: white;
+    transform: scale(1.02);
+}
+
+.card {
+    background-color: #2a2a2a; /* Card background color */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card h3 {
+    color: #e0e0e0; /* Slightly lighter for headings */
+}
+
+.toggle-button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff5722; /* Highlight color */
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-button:hover {
+    background-color: #e64a19; /* Darker shade on hover */
+}
+
+.details {
+    margin-top: 1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.interactive-guide {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.flowchart {
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #333;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.question {
+    margin-bottom: 1rem;
+}
+
+.button {
+    margin: 0 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff5722; /* Highlight color */
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #e64a19; /* Darker shade on hover */
+}
+
+.result {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: #ff5722; /* Highlight color */
+}
+
+.flowchart-node {
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid #ff5722;
+    border-radius: 5px;
+    background-color: #444; /* Node background */
+}
+
+.footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #1b1b1b;
+    margin-top: 2rem;
+}
+
+.footer p {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .choking-procedures {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,151 @@
+/* General styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 2rem;
+}
+
+/* What is Cramp Section */
+.info-section {
+    background-color: #e6f7ff;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
+}
+
+.info-section h2 {
+    font-size: 1.8rem;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.info-section p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* Cramp Types in a 4-Column Layout */
+.cramp-grid {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.cramp-box {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1; /* Allow the boxes to grow equally */
+    min-width: 220px; /* Minimum width for each column */
+    max-width: 25%; /* Maximum width to maintain four columns */
+    text-align: center;
+    position: relative;
+    display: flex; /* Make the box a flex container */
+    flex-direction: column; /* Arrange children vertically */
+    justify-content: space-between; /* Space out the items */
+    height: auto; /* Allow height to be dynamic */
+}
+
+/* Heading and button styles */
+.cramp-box h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.cramp-details {
+    display: none; /* Hide details by default */
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    flex-grow: 1; /* Allow it to grow if needed */
+}
+
+/* Image styling */
+.section-image {
+    max-width: 80%; /* Responsive width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional rounding of corners */
+    margin-top: 10px; /* Space between heading and image */
+}
+
+.column-image {
+    width: auto; /* Adjust width automatically */
+    height: 150px; /* Set a fixed height for all column images */
+    border-radius: 10px; /* Optional rounding of corners */
+    margin: 10px 0; /* Space between heading and image */
+}
+
+/* Button styling */
+.toggle-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px; /* Space between image and button */
+    transition: all 0.3s ease; /* Add smooth transition */
+    width: 80%; /* Make buttons the same width for uniformity */
+    align-self: center; /* Center the button horizontally */
+}
+
+.toggle-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #007bff;
+    color: white;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .cramp-grid {
+        flex-wrap: wrap;
+    }
+
+    .cramp-box {
+        width: calc(50% - 20px); /* Adjust to 2 columns */
+        min-width: 220px; /* Maintain minimum width */
+    }
+}
+
+@media (max-width: 768px) {
+    .cramp-box {
+        width: 100%; /* Full width for smaller screens */
+    }
+}

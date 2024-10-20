@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choking Awareness</title>
+    <link rel="stylesheet" href="choking.css">
+    <script src="choking.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Choking Awareness</h1>
+            <p>Foreign body airway obstruction: A life-threatening medical emergency</p>
+        </div>
+    </header>
+
+    <main class="main-content container">
+        <section class="recognition">
+            <h2>Recognition</h2>
+            <div class="obstruction mild">
+                <h3>Mild Obstruction</h3>
+                <p>Difficulty in speaking, coughing, and breathing.</p>
+            </div>
+            <div class="obstruction severe">
+                <h3>Severe Obstruction</h3>
+                <p>Inability to speak, cough, or breathe. Eventually, the casualty will become unresponsive.</p>
+            </div>
+        </section>
+
+        <section class="choking-procedures">
+            <h2>Choking Procedures</h2>
+            <div class="card">
+                <h3>Adult / Child (1 Year - Puberty)</h3>
+                <button class="toggle-button" onclick="toggleDetails('adultDetails')">Show Steps</button>
+                <ol id="adultDetails" class="details hidden">
+                    <li>Encourage the casualty to cough hard.</li>
+                    <li>If it fails, give five back blows.</li>
+                    <li>Bend the casualty forward, give five abdominal thrusts (Heimlich manoeuvre).</li>
+                    <li>Check the mouth for obstructions.</li>
+                    <li>Repeat if choking persists; call 999 if necessary.</li>
+                </ol>
+            </div>
+
+            <div class="card">
+                <h3>Infant (&lt; 1 Year)</h3>
+                <button class="toggle-button" onclick="toggleDetails('infantDetails')">Show Steps</button>
+                <ol id="infantDetails" class="details hidden">
+                    <li>Lay the infant facing down along your forearm.</li>
+                    <li>Give 5 back blows between the shoulders.</li>
+                    <li>Turn the infant over, check the mouth for obstructions.</li>
+                    <li>If back blows fail, give 5 chest thrusts.</li>
+                    <li>If choking persists, call 999 and repeat steps until help arrives.</li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="interactive-guide">
+            <h2>Interactive Flowchart</h2>
+            <div class="flowchart">
+                <div id="startNode" class="question">
+                    <h3>Is the person choking?</h3>
+                    <button class="button" onclick="handleYes()">Yes</button>
+                    <button class="button" onclick="handleNo()">No</button>
+                </div>
+                <div id="flowchartResult" class="result hidden">
+                    <p id="resultText"></p>
+                    <button class="button" onclick="resetFlowchart()">Start Over</button>
+                </div>
+            </div>
+        </section>
+        
+    <footer class="footer">
+        <div class="container">
+            <p>For more information, consult a medical professional or emergency services.</p>
+        </div>
+    </footer>
+</body>
+</html>
