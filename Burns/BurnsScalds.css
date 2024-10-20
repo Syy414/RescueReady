@@ -1,0 +1,218 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Color Variables */
+:root {
+    --primary-color: #6200ea;
+    --secondary-color: #03dac5;
+    --hover-color: #018786;
+    --background-color: #f0f4f8;
+    --card-background: #ffffff;
+    --option-color-1: #ff6f00; /* Bright Orange */
+    --option-color-2: #42a5f5; /* Light Blue */
+    --option-color-3: #66bb6a; /* Light Green */
+    --option-color-4: #ab47bc; /* Purple */
+}
+
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--background-color), #e3f2fd);
+    perspective: 1000px;
+    overflow-x: hidden;
+    padding-top: 20px; /* Adjust based on navbar height */
+    animation: gradientAnimation 10s ease infinite;
+}
+
+/* Layout Styles */
+.background {
+    position: relative;
+    margin-left: 250px; /* Offset for the sidebar */
+    width: calc(100% - 250px);
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: #fafafa;
+}
+
+/* Left Sidebar Styles */
+.sidebar {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    height: 100%; 
+    width: 200px; 
+    background-color: var(--primary-color); /* Use primary color from variables */
+    padding: 20px; 
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2); 
+    z-index: 1000; 
+}
+
+/* Sidebar Link Styles */
+.sidebar a {
+    display: block; 
+    color: white; /* Keep text color white */
+    text-decoration: none; 
+    margin: 15px 0; 
+    font-weight: 600; 
+    padding: 10px; 
+    border-radius: 5px; 
+    transition: background-color 0.3s, transform 0.3s; 
+}
+
+.sidebar a:hover {
+    background-color: rgba(255, 255, 255, 0.1); 
+    transform: translateX(5px); /* Slight shift to the right on hover */
+}
+
+/* Bento Grid Layout */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* Adjust gap between items */
+}
+
+.bento-card {
+    position: relative; /* Position relative to allow absolute positioning of tooltip */
+    border: 1px solid #ccc; /* Add border for visibility */
+    border-radius: 8px;
+    padding: 20px;
+    background: var(--card-background); /* Card background color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, background-color 0.3s; /* Add transition for background color */
+    cursor: pointer; /* Pointer on hover */
+}
+
+.bento-card:hover {
+    transform: scale(1.05);
+    background-color: var(--secondary-color); /* Change background color on hover */
+}
+
+.bento-card i {
+    font-size: 2em;
+    color: #ff5733; /* Customize icon color */
+}
+
+.bento-card h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+.bento-card p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none; /* Default is hidden */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    width: 600px; /* Width of the modal */
+    height: 400px; /* Height of the modal */
+    overflow: hidden; /* Hide overflow if content exceeds */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
+}
+
+.modal-left {
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center items vertically */
+}
+
+.modal-left img {
+    width: 150px; /* Fixed width for images */
+    height: auto; /* Keep aspect ratio */
+    margin-right: 20px;
+}
+
+.modal-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center align content vertically */
+    flex-grow: 1; /* Allow the right side to take remaining space */
+}
+
+.modal-right h2 {
+    margin-top: 0;
+}
+
+/* Close button styles */
+.close {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.icon-button {
+    background: none; /* No background */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer on hover */
+}
+
+.icon-button i {
+    font-size: 2em; /* Adjust icon size if needed */
+    color: #ff5733; /* Customize icon color */
+    transition: transform 0.3s; /* Add a hover effect */
+}
+
+.icon-button:hover i {
+    transform: scale(1.1); /* Scale up on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .background {
+        margin-left: 200px;
+    }
+
+    .bento-grid {
+        grid-template-columns: 1fr; /* Stack items on smaller screens */
+    }
+
+    /* Adjust card sizes for smaller screens */
+    .bento-card {
+        height: auto; /* Allow height to adjust based on content */
+    }
+}
+
+/* Additional Responsive Adjustments for Mobile */
+@media (max-width: 480px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for mobile */
+        gap: 10px; /* Smaller gap between cards */
+    }
+
+    .bento-card {
+        height: 150px; /* Adjust card height for mobile */
+    }
+
+    /* Adjust sidebar */
+    .sidebar {
+        width: 100%; /* Full width sidebar on mobile */
+        height: auto; /* Allow height to adjust */
+    }
+
+    .background {
+        margin-left: 0; /* Remove left margin on mobile */
+        width: 100%; /* Full width */
+    }
+}
