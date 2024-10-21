@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Types of Wounds</title>
+  <link rel="stylesheet" href="wound.css">
+</head>
+<body>
+  <header>
+    <h1>Types of Wounds</h1>
+    <p>Click on a wound type to learn more!</p>
+  </header>
+
+  <section class="wound-types">
+    <div class="wound-card" id="incisedButton">
+      <img src="images/incised.jpg" alt="Incised Wound" class="wound-image">
+      <h3>Incised Wound</h3>
+    </div>
+    <div class="wound-card" id="lacerationButton">
+      <img src="images/laceration.jpg" alt="Laceration" class="wound-image">
+      <h3>Laceration</h3>
+    </div>
+    <div class="wound-card" id="abrasionButton">
+      <img src="images/abrasion.jpg" alt="Abrasion" class="wound-image">
+      <h3>Abrasion</h3>
+    </div>
+    <div class="wound-card" id="contusionButton">
+      <img src="images/contusion.jpg" alt="Contusion" class="wound-image">
+      <h3>Contusion</h3>
+    </div>
+    <div class="wound-card" id="punctureButton">
+      <img src="images/puncture.jpg" alt="Puncture Wound" class="wound-image">
+      <h3>Puncture Wound</h3>
+    </div>
+    <div class="wound-card" id="stabButton">
+      <img src="images/stab.jpg" alt="Stab Wound" class="wound-image">
+      <h3>Stab Wound</h3>
+    </div>
+    <div class="wound-card" id="gunshotButton">
+      <img src="images/gunshot.jpg" alt="Gunshot Wound" class="wound-image">
+      <h3>Gunshot Wound</h3>
+    </div>
+  </section>
+
+  <!-- Audio Elements -->
+  <audio id="incisedSound" src="sounds/incised.mp3"></audio>
+  <audio id="lacerationSound" src="sounds/laceration.mp3"></audio>
+  <audio id="abrasionSound" src="sounds/abrasion.mp3"></audio>
+  <audio id="contusionSound" src="sounds/contusion.mp3"></audio>
+  <audio id="punctureSound" src="sounds/contusion.mp3"></audio>
+  <audio id="stabSound" src="sounds/stab.mp3"></audio>
+  <audio id="gunshotSound" src="sounds/gunshot.mp3"></audio>
+
+  <!-- Modals -->
+  <div id="incisedModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Incised Wound (Clean cut)</h2>
+      <p>Caused by a clean surface cut from a sharp-edged object such as a knife. Blood vessels are cut straight across, leading to profuse bleeding. Structures such as tendons or nerves may be damaged.</p>
+    </div>
+  </div>
+
+  <div id="lacerationModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Laceration</h2>
+      <p>Blunt or ripping forces result in tears or lacerations. They bleed less profusely than incised wounds but may involve more tissue damage. Lacerations carry a high infection risk.</p>
+    </div>
+  </div>
+
+  <div id="abrasionModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Abrasion (Graze)</h2>
+      <p>A superficial wound where the topmost layers of skin are scraped off, leaving a raw and tender area. Often caused by a sliding fall or a friction burn. Foreign particles may be embedded, increasing the risk of infection.</p>
+    </div>
+  </div>
+
+  <div id="contusionModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Contusion (Bruise)</h2>
+      <p>A blunt blow can rupture capillaries beneath the skin, causing blood to leak into tissues. Extensive contusions and swelling may indicate deeper damage, such as a fracture or internal injury.</p>
+    </div>
+  </div>
+
+  <div id="punctureModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Puncture Wound</h2>
+      <p>Injury from a sharp object, like stepping on a nail or being pricked by a needle. These wounds have a small entry site but may cause deep internal damage and carry a high risk of infection.</p>
+    </div>
+  </div>
+
+  <div id="stabModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Stab Wound</h2>
+      <p>A deep incision caused by a sharp or bladed instrument, typically a knife. Stab wounds to the trunk are especially serious, with a high risk of damaging vital organs and causing life-threatening internal bleeding.</p>
+    </div>
+  </div>
+
+  <div id="gunshotModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Gunshot Wound</h2>
+      <p>Caused by a bullet or missile being driven into or through the body, resulting in serious internal injuries. A small, neat entry wound may be accompanied by a large, ragged exit wound, with a high risk of contamination.</p>
+    </div>
+  </div>
+
+  <script src="wound.js"></script>
+</body>
+</html>
