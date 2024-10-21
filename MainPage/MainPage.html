@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rescue Ready</title>
+    <link rel="stylesheet" href="MainPage.css">
+</head>
+<body>
+    <div class="grid-container" id="grid-container"></div>
+    <h1 class="title">
+        <a href="#" class="clickable-title" id="title">Rescue Ready</a>
+    </h1>
+
+    <!-- Split effect elements -->
+    <div class="half split-left" id="left-half"></div>
+    <div class="half split-right" id="right-half"></div>
+
+    <!-- New Page Content to be Revealed -->
+    <div class="container" id="new-content">
+        <h1 class="hyper-text" id="hyperText">Welcome To Rescue Ready</h1>
+        <p class="intro">Empowering communities through essential first aid knowledge. Rescue Ready is your go-to resource for learning life-saving skills, making critical medical information accessible to everyone. Be prepared, be confident, be Rescue Ready.</p>
+        <div class="button-container">
+            <button class="rainbow-button" id="aboutUsButton">About Us</button>
+            <button class="rainbow-button" id="introductionButton">Introduction</button>
+            <button class="rainbow-button">FAQ</button>
+        </div>
+        <div id="aboutContent" class="about-content" style="display: none;">
+            <h2>First Aid Education and Interactive Learning Platform</h2>
+            <p>Many individuals lack basic first aid knowledge, leaving them unprepared to handle emergencies effectively. This lack of awareness often results in an inadequate response during accidents or health crises, which could otherwise be mitigated or managed with proper first aid techniques. Additionally, there is a widespread absence of first aid kits in homes, buildings, and vehicles, further exacerbating the risks associated with emergencies.</p>
+            <p>This project aims to create a comprehensive first aid education website designed to increase public awareness, improve emergency preparedness, and promote the importance of having first aid knowledge and resources available. The platform will offer accessible and engaging content, including interactive modules, quizzes, video tutorials, and downloadable resources to equip users with essential first aid skills. By leveraging digital learning, we aim to bridge the gap in first aid awareness and readiness within the community.</p>
+        </div>
+        <div id="introductionContent" class="introduction-content" style="display: none;">
+            <h2>Introduction</h2>
+            <h3>What is First Aid?</h3>
+            <ul>
+                <li>First aid is the immediate care given to an injured or suddenly ill person.</li>
+                <li>DOES NOT replace proper medical treatment.</li>
+                <li>Consists of temporary assistance only until professional help arrives.</li>
+            </ul>
+            <h3>PURPOSE OF FIRST AID</h3>
+            <ul>
+                <li>Reduce pain</li>
+                <li>Save lives</li>
+                <li>Promote recovery</li>
+                <li>Prevent condition from getting worse</li>
+            </ul>
+            <h3>PROPERTIES OF FIRST AID</h3>
+            <ul>
+                <li>Protect yourself - always prioritize own safety before providing help.</li>
+                <li>Assess a situation - evaluate the scene.</li>
+                <li>Arrange for appropriate help - Call 999 for ambulance / emergency help.</li>
+                <li>Give early treatment - Treat those who have more serious injury first.</li>
+                <li>Reassure the victim at all times - talk to them, build trust with the victim, keep them maintain consciousness.</li>
+                <li>Prevent cross-infection - wear protective equipment when treating a victim.</li>
+                <li>Assess the casualties - identify injuries and nature of illness affecting a casualty.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="carousel">
+        <div class="carousel-buttons">
+            <button class="carousel-button active">
+                <img src="images/wound.jpg" alt="Type of Wound Icon">Type of Wound
+            </button>
+            <button class="carousel-button">
+                <img src="images/Quiz.jpg" alt="Quiz Icon">Quiz
+            </button>
+            <button class="carousel-button">
+                <img src="images/First-Aid-Kit.jpg" alt="First Aid Kit Icon">First Aid Kit
+            </button>
+            <button class="carousel-button">
+                <img src="images/Cramp.jpg" alt="Cramp Icon">Cramp
+            </button>
+            <button class="carousel-button">
+                <img src="images/CPR.jpg" alt="CPR Icon">CPR
+            </button>
+            <button class="carousel-button">
+                <img src="images/Choking.jpg" alt="Choking Icon">Choking
+            </button>
+            <button class="carousel-button">
+                <img src="images/Burns.jpg" alt="Burns and Scalds Icon">Burns and Scalds
+            </button>
+            <button class="carousel-button">
+                <img src="images/Bleeding.jpg" alt="Bleeding Icon">Bleeding
+            </button>
+            <button class="carousel-button">
+                <img src="images/AED.jpg" alt="AED Icon">AED
+            </button>
+        </div>
+        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="next" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+
+    <script src="MainPage.js"></script>
+</body>
+</html>
+
