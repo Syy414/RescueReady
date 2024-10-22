@@ -3,98 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rescue Ready</title>
+    <title>Rescue Ready - First Aid Education</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="MainPage.css">
 </head>
 <body>
-    <div class="grid-container" id="grid-container"></div>
-    <h1 class="title">
-        <a href="#" class="clickable-title" id="title">Rescue Ready</a>
-    </h1>
-
-    <!-- Split effect elements -->
-    <div class="half split-left" id="left-half"></div>
-    <div class="half split-right" id="right-half"></div>
-
-    <!-- Main Content -->
-    <div class="main-content">
-        <h1>Welcome to Your Website</h1>
-        <p>Empowering communities through essential first aid knowledge. Rescue Ready is your go-to resource for learning life-saving skills, making critical medical information accessible to everyone. Be prepared, be confident, be Rescue Ready.</p>
+    <!-- Background Video -->
+    <div id="video-container">
+        <video autoplay muted playsinline id="background-video">
+            <source src="ambulance.mp4" type="video/mp4">
+        </video>
     </div>
 
-    <!-- About Us Section -->
-    <section id="about-us" class="about-section">
-        <div class="container">
-            <h2>About Us</h2>
-            <p>At Rescue Ready, we are committed to providing the best services to our customers. Many individuals lack basic first aid knowledge, leaving them unprepared to handle emergencies effectively. This lack of awareness often results in an inadequate response during accidents or health crises, which could otherwise be mitigated or managed with proper first aid techniques. Additionally, there is a widespread absence of first aid kits in homes, buildings, and vehicles, further exacerbating the risks associated with emergencies.</p>
-            <!-- Add more content about your company here -->
-        </div>
-    </section>
+    <!-- Main Website Content (Initially hidden) -->
+    <div id="main-content" class="hidden">
+        <!-- Navigation Bar -->
+        <nav>
+            <div class="logo">First Aid Education</div>
+            <div class="nav-links">
+                <a href="#" class="active">Home</a>
+                <div class="dropdown">
+                    <a href="#learn">Learn with Us</a>
+                    <div class="dropdown-content">
+                        <a href="https://syy414.github.io/RescueReady/Type%20of%20Wound/wound.html">Type of Wound</a>
+                        <a href="https://syy414.github.io/RescueReady/Quiz/Quiz.html">Quiz</a>
+                        <a href="https://syy414.github.io/RescueReady/FirstAidKit/FirstAidKit.html">First Aid Kit</a>
+                        <a href="https://syy414.github.io/RescueReady/Cramp/CRAMP.html">Cramp</a>
+                        <a href="https://syy414.github.io/RescueReady/CPR/CPR.html">CPR</a>
+                        <a href="https://syy414.github.io/RescueReady/Choking/choking.html">Choking</a>
+                        <a href="https://syy414.github.io/RescueReady/Burns/BurnsScalds.html">Burns and Scalds</a>
+                        <a href="https://syy414.github.io/RescueReady/Bleeding/Bleeding.html">Bleeding</a>
+                        <a href="https://syy414.github.io/RescueReady/AED/AED.html">AED</a>
+                    </div>
+                </div>
+                <a href="#about">About Us</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <a href="#signup" class="sign-up-btn">Get Started</a>
+        </nav>
 
-    <!-- FAQ Section -->
-    <section id="faq" class="faq-section">
-        <div class="container">
+        <!-- Hero Section (with Search Bar and Images) -->
+        <div class="hero" id="hero">
+            <div class="hero-images">
+                <img src="images/Image1.jpg" alt="First Aid Image 1" class="hero-slide active">
+                <img src="images/Image2.jpg" alt="First Aid Image 2" class="hero-slide">
+                <img src="images/Image3.webp" alt="First Aid Image 3" class="hero-slide">
+            </div>
+            <div class="hero-content">
+                <h1>LEARN FIRST AID - SAVE LIVES</h1>
+                <p>Master essential first aid skills with our comprehensive educational resources. Be prepared to make a difference when it matters most.</p>
+                <!-- Navigation dots -->
+                <div class="navigation-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <a href="#learn" class="cta-button">Start Learning Now</a>
+            </div>
+            <!-- Search bar -->
+            <input type="text" class="search-bar" id="search-bar" placeholder="Search first aid topics...">
+        </div>
+
+        <!-- Topics Section -->
+        <section class="topics" id="learn">
+            <h2>Essential First Aid Topics</h2>
+            <div class="topics-grid">
+                <div class="topic-card" data-topic="cpr basics">
+                    <img src="images/CPR.jpg" alt="CPR Training">
+                    <div class="card-content">
+                        <h3>CPR Basics</h3>
+                        <p>Learn the fundamental techniques of cardiopulmonary resuscitation.</p>
+                        <a href="https://syy414.github.io/RescueReady/CPR/CPR.html" class="read-more">Learn More</a>
+                    </div>
+                </div>
+                <div class="topic-card" data-topic="wound management">
+                    <img src="images/Wound.jpg" alt="Wound Care">
+                    <div class="card-content">
+                        <h3>Wound Management</h3>
+                        <p>Understanding different types of wounds and their proper treatment.</p>
+                        <a href="https://syy414.github.io/RescueReady/Type%20of%20Wound/wound.html" class="read-more">Learn More</a>
+                    </div>
+                </div>
+                <div class="topic-card" data-topic="first aid kit essentials">
+                    <img src="images/FAK.jpg" alt="First Aid Kit">
+                    <div class="card-content">
+                        <h3>First Aid Kit Essentials</h3>
+                        <p>What to include in your emergency first aid kit.</p>
+                        <a href="https://syy414.github.io/RescueReady/FirstAidKit/FirstAidKit.html" class="read-more">Learn More</a>
+                    </div>
+                </div>
+                <div class="topic-card" data-topic="cramp">
+                    <img src="images/Cramp.jpg" alt="Cramp">
+                    <div class="card-content">
+                        <h3>Cramp</h3>
+                        <p>Understanding how to handle various type of cramp.</p>
+                        <a href="https://syy414.github.io/RescueReady/Cramp/CRAMP.html" class="read-more">Learn More</a>
+                    </div>
+                </div>
+                <div class="topic-card" data-topic="Choking">
+                    <img src="images/Choking.jpg" alt="Choking">
+                    <div class="card-content">
+                        <h3>Choking</h3>
+                        <p>Learn how to identify and respond to choking emergencies with simple and effective first aid techniques.</p>
+                        <a href="https://syy414.github.io/RescueReady/Choking/choking.html" class="read-more">Learn More</a>
+                    </div>
+                </div>
+                <div class="topic-card" data-topic="Burns and Scalds">
+                    <img src="images/BURNS.jpg" alt="Burns">
+                    <div class="card-content">
+                        <h3>Burns and Scalds</h3>
+                        <p>Learn how to treat burns and scalds effectively, from minor injuries to severe cases, and prevent further damage.</p>
+                        <a href="https://syy414.github.io/RescueReady/Burns/BurnsScalds.html" class="read-more">Learn More</a>
+                    </div>
+                </div>
+                <div class="topic-card" data-topic="bleeding management">
+                    <img src="images/Bleeding.jpg" alt="Bleeding">
+                    <div class="card-content">
+                        <h3>Bleeding Management</h3>
+                        <p>Understanding different types of bleeding and their proper treatment.</p>
+                        <a href="https://syy414.github.io/RescueReady/Bleeding/Bleeding.html" class="read-more">Learn More</a>
+                    </div>
+                </div>
+                <div class="topic-card" data-topic="aed">
+                    <img src="images/AED.jpg" alt="aed">
+                    <div class="card-content">
+                        <h3>AED</h3>
+                        <p>Learn how to use an Automated External Defibrillator (AED) to save lives during sudden cardiac arrest.</p>
+                        <a href="https://syy414.github.io/RescueReady/AED/AED.html" class="read-more">Learn More</a>
+                    </div>
+                </div>
+                <div class="topic-card" data-topic="Quiz">
+                    <img src="images/Quiz.jpg" alt="Quiz">
+                    <div class="card-content">
+                        <h3>Quiz</h3>
+                        <p>Test your first aid knowledge with interactive quizzes designed to help you stay prepared for emergencies..</p>
+                        <a href="https://syy414.github.io/RescueReady/Quiz/Quiz.html" class="read-more">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq" id="faq">
             <h2>Frequently Asked Questions</h2>
-            <!-- FAQ Item 1 -->
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>What services do you offer?</h3>
-                    <span class="faq-toggle">+</span>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <h3><span class="plus-minus">+</span> What is First Aid?</h3>
+                    <div class="accordion-content">
+                        <p>First aid is the immediate assistance provided to someone who is injured or ill before professional medical help arrives.</p>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>We offer a wide range of services including web development, digital marketing, and graphic design to help your business grow.</p>
+                <div class="accordion-item">
+                    <h3><span class="plus-minus">+</span> How to perform CPR?</h3>
+                    <div class="accordion-content">
+                        <p>CPR involves chest compressions and rescue breaths. The current recommended ratio is 30 compressions to 2 breaths for adults.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h3><span class="plus-minus">+</span> When should I call emergency services?</h3>
+                    <div class="accordion-content">
+                        <p>Call emergency services immediately in cases of severe bleeding, unconsciousness, chest pain, difficulty breathing, or any life-threatening situation.</p>
+                    </div>
                 </div>
             </div>
-            <!-- FAQ Item 2 -->
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>How can I contact you?</h3>
-                    <span class="faq-toggle">+</span>
+        </section>
+
+        <!-- About Us Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <h2>About Us</h2>
+                <p>We are dedicated to providing accessible, comprehensive first aid education to everyone. Our mission is to empower individuals with the knowledge and confidence to respond effectively in emergency situations.</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#learn">Courses</a>
+                    <a href="#about">About Us</a>
+                    <a href="#faq">FAQ</a>
                 </div>
-                <div class="faq-answer">
-                    <p>You can reach us via email at contact@yourcompany.com or call us at (123) 456-7890.</p>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@firstaid.edu</p>
+                    <p>Emergency: 911</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
             </div>
-            <!-- Add more FAQ items as needed -->
-        </div>
-    </section>
-
-    <div class="carousel">
-        <div class="carousel-buttons">
-            <a href="https://syy414.github.io/RescueReady/Type%20of%20Wound/wound.html" class="carousel-button active">
-                <img src="images/wound.jpg" alt="Type of Wound Icon">Type of Wound
-            </a>
-            <a href="https://syy414.github.io/RescueReady/Quiz/Quiz.html" class="carousel-button">
-                <img src="images/Quiz.jpg" alt="Quiz Icon">Quiz
-            </a>
-            <a href="https://syy414.github.io/RescueReady/FirstAidKit/FirstAidKit.html" class="carousel-button">
-                <img src="images/First-Aid-Kit.jpg" alt="First Aid Kit Icon">First Aid Kit
-            </a>
-            <a href="https://syy414.github.io/RescueReady/Cramp/CRAMP.html" class="carousel-button">
-                <img src="images/Cramp.jpg" alt="Cramp Icon">Cramp
-            </a>
-            <a href="https://syy414.github.io/RescueReady/CPR/CPR.html" class="carousel-button">
-                <img src="images/CPR.jpg" alt="CPR Icon">CPR
-            </a>
-            <a href="https://syy414.github.io/RescueReady/Choking/choking.html" class="carousel-button">
-                <img src="images/Choking.jpg" alt="Choking Icon">Choking
-            </a>
-            <a href="https://syy414.github.io/RescueReady/Burns/BurnsScalds.html" class="carousel-button">
-                <img src="images/Burns.jpg" alt="Burns and Scalds Icon">Burns and Scalds
-            </a>
-            <a href="https://syy414.github.io/RescueReady/Bleeding/Bleeding.html" class="carousel-button">
-                <img src="images/Bleeding.jpg" alt="Bleeding Icon">Bleeding
-            </a>
-            <a href="https://syy414.github.io/RescueReady/AED/AED.html" class="carousel-button">
-                <img src="images/AED.jpg" alt="AED Icon">AED
-            </a>
-        </div>
-    </div>
-    
-        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-        <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </footer>
     </div>
 
+    <!-- JavaScript to reveal content after video or set time -->
     <script src="MainPage.js"></script>
 </body>
 </html>
