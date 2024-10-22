@@ -1,125 +1,213 @@
-// Constants for the grid, title, new content, and hyper text
-const gridContainer = document.getElementById('grid-container');
-const title = document.getElementById('title');
-const newContent = document.getElementById('new-content');
-const hyperTextElement = document.getElementById('hyperText');
+// script.js
+document.addEventListener('DOMContentLoaded', function () {
+    // Hero Section for Slideshow
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.dot');
+    const searchInput = document.getElementById('search-bar');
+    let currentSlide = 0;
 
-// Create 500 grid items
-for (let i = 0; i < 500; i++) {
-    const gridItem = document.createElement('div');
-    gridItem.classList.add('grid-item');
-    gridContainer.appendChild(gridItem);
-}
+    function showSlide(index) {
+        slides.forEach((slide, idx) => {
+            slide.classList.remove('active');
+            dots[idx].classList.remove('active');
+            if (idx === index) {
+                slide.classList.add('active');
+                dots[idx].classList.add('active');
+            }
+        });
+    }
 
-// Function to randomly change the color of grid items
-function randomizeGridColor() {
-    const gridItems = document.querySelectorAll('.grid-item');
-    gridItems.forEach(item => {
-        item.style.backgroundColor = '#f0f0f0';
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    // Initialize the first slide
+    showSlide(0);
+
+    // Automatically change slides every 5 seconds
+    setInterval(nextSlide, 5000);
+
+    // Add click event for navigation dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            showSlide(currentSlide);
+        });
     });
 
-    const randomCount = Math.floor(Math.random() * 50) + 10;
-    for (let i = 0; i < randomCount; i++) {
-        const randomIndex = Math.floor(Math.random() * gridItems.length);
-        gridItems[randomIndex].style.backgroundColor = '#cccccc';
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            mobileMenuButton.classList.toggle('active');
+
+            // Change button icon based on menu state
+            const icon = mobileMenuButton.querySelector('i');
+            icon.classList.toggle('fa-bars', !mobileMenu.classList.contains('active'));
+            icon.classList.toggle('fa-times', mobileMenu.classList.contains('active'));
+        });
     }
-}
 
-// Start the randomization immediately
-randomizeGridColor();
-
-// Set an interval to randomize grid color every 2 seconds
-setInterval(randomizeGridColor, 2000);
-
-// Function to activate the fade-out effect
-function activateFadeOutEffect() {
-    // Fade out the title and grid simultaneously
-    title.style.opacity = '0';
-    gridContainer.style.opacity = '0';
-
-    // Show new content after the fade-out animation completes
-    setTimeout(() => {
-        gridContainer.style.display = 'none'; // Hide the grid
-        newContent.classList.add('show'); // Show the new content
-    }, 500); // Wait for the fade-out duration
-}
-
-// Show grid for 2 seconds then redirect to content
-setTimeout(activateFadeOutEffect, 2000); // Wait for 2 seconds before starting the transition
-
-// Ensure the grid is visible initially
-gridContainer.style.display = 'grid';
-
-// Carousel functionality
-let currentSlide = 0;
-const buttons = document.querySelectorAll('.carousel-button');
-
-function showSlide(index) {
-    buttons.forEach((button, i) => {
-        button.classList.remove('active');
-        if (i === index) {
-            button.classList.add('active');
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (mobileMenu && mobileMenu.classList.contains('active') &&
+            !mobileMenu.contains(e.target) &&
+            !mobileMenuButton.contains(e.target)) {
+            mobileMenu.classList.remove('active');
+            mobileMenuButton.classList.remove('active');
+            const icon = mobileMenuButton.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
         }
     });
-}
 
-function changeSlide(direction) {
-    currentSlide += direction;
-    if (currentSlide < 0) {
-        currentSlide = buttons.length - 1; // Loop to last button
-    } else if (currentSlide >= buttons.length) {
-        currentSlide = 0; // Loop to first button
+    // Form Validation
+    const contactForm = document.querySelector('#contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = contactForm.querySelector('#name').value;
+            const email = contactForm.querySelector('#email').value;
+            const message = contactForm.querySelector('#message').value;
+
+            let isValid = true;
+            const errors = [];
+
+            // Basic validation
+            if (!name.trim()) {
+                errors.push('Name is required');
+                isValid = false;
+            }
+
+            if (!email.trim() || !email.match(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/)) {
+                errors.push('Valid email is required');
+                isValid = false;
+            }
+
+            if (!message.trim()) {
+                errors.push('Message is required');
+                isValid = false;
+            }
+
+            if (!isValid) {
+                showErrors(errors);
+            } else {
+                // Submit form
+                console.log('Form submitted:', { name, email, message });
+                contactForm.reset();
+                showSuccess('Message sent successfully!');
+            }
+        });
     }
-    showSlide(currentSlide);
-}
 
-// Initialize carousel
-showSlide(currentSlide);
+    // Error and Success message display functions
+    function showErrors(errors) {
+        const errorDiv = document.querySelector('.form-errors') ||
+            document.createElement('div');
+        errorDiv.className = 'form-errors';
+        errorDiv.innerHTML = errors.map(error => `<p class="error">${error}</p>`).join('');
 
-// Hyper-changing text functionality
-const texts = [
-    'Welcome To Rescue Ready'
-];
-
-let index = 0;
-let letterIndex = 0;
-let interval;
-let textChanged = false; // Flag to track if text has changed
-
-// Function to change the text one letter at a time
-function changeText() {
-    if (letterIndex < texts[index].length) {
-        hyperTextElement.textContent = texts[index].slice(0, letterIndex + 1);
-        letterIndex++;
-    } else {
-        clearInterval(interval); // Stop the interval once the text is fully displayed
-        textChanged = true; // Set flag to true after one full cycle
+        if (!document.querySelector('.form-errors')) {
+            contactForm.insertBefore(errorDiv, contactForm.firstChild);
+        }
     }
-}
 
-// Start the text change interval automatically
-interval = setInterval(changeText, 200); // Change text every 200 milliseconds
+    function showSuccess(message) {
+        const successDiv = document.querySelector('.form-success') ||
+            document.createElement('div');
+        successDiv.className = 'form-success';
+        successDiv.innerHTML = `<p>${message}</p>`;
 
-// Call changeText to start changing text immediately on page load
-changeText();
+        if (!document.querySelector('.form-success')) {
+            contactForm.insertBefore(successDiv, contactForm.firstChild);
+        }
 
-// Add event listener for the About Us button
-document.getElementById('aboutUsButton').addEventListener('click', function() {
-    const aboutContent = document.getElementById('aboutContent');
-    // Toggle display of the aboutContent
-    aboutContent.style.display = aboutContent.style.display === 'block' ? 'none' : 'block'; // Toggle visibility
-});
+        // Remove success message after 3 seconds
+        setTimeout(() => {
+            successDiv.remove();
+        }, 3000);
+    }
 
-// Add event listener for the Introduction button
-document.getElementById('introductionButton').addEventListener('click', function() {
-    const introductionContent = document.getElementById('introductionContent');
-    // Toggle display of the introductionContent
-    introductionContent.style.display = introductionContent.style.display === 'block' ? 'none' : 'block'; // Toggle visibility
-});
+    // Back to Top Button
+    const backToTopButton = document.querySelector('.back-to-top');
+    if (backToTopButton) {
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
 
-// Add event listener for the FAQ button
-document.getElementById('FAQButton').addEventListener('click', function() {
-    const FAQContent = document.getElementById('FAQContent');
-    // Toggle display of the introductionContent
-    FAQContent.style.display = FAQContent.style.display === 'block' ? 'none' : 'block'; // Toggle visibility
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    // Filter topics based on search input
+    searchInput.addEventListener('input', () => {
+        const filter = searchInput.value.toLowerCase();
+        const topics = document.querySelectorAll('.topic-card');
+
+        topics.forEach(topic => {
+            const text = topic.dataset.topic.toLowerCase();
+            topic.style.display = text.includes(filter) ? 'block' : 'none';
+        });
+    });
+
+    // Accordion functionality for FAQs
+    const accordionItems = document.querySelectorAll('.accordion-item h3');
+    accordionItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const parent = item.parentElement;
+            const content = parent.querySelector('.accordion-content');
+            const plusMinusSign = item.querySelector('.plus-minus'); // Select the plus/minus sign
+
+            parent.classList.toggle('active');
+            content.style.display = parent.classList.contains('active') ? 'block' : 'none';
+
+            // Toggle between plus and minus
+            if (parent.classList.contains('active')) {
+                plusMinusSign.textContent = '-'; // Change to minus when expanded
+            } else {
+                plusMinusSign.textContent = '+'; // Change to plus when collapsed
+            }
+        });
+    });
+
+    // Initializing active dot
+    function updateDots() {
+        dots.forEach((dot, index) => {
+            dot.classList.remove('active');
+            if (index === 0) { // Default to the first section
+                dot.classList.add('active');
+            }
+        });
+    }
+
+    updateDots(); // Initialize dots
+
+    // Get video and content elements
+    const video = document.getElementById('background-video');
+    const mainContent = document.getElementById('main-content');
+
+    // Listen for when the video ends
+    video.addEventListener('ended', () => {
+        // Apply zoom-in animation to the video container
+        document.getElementById('video-container').classList.add('reveal-animation');
+
+        // After animation ends, hide video and show main content
+        setTimeout(() => {
+            document.getElementById('video-container').style.display = 'none';
+            mainContent.classList.remove('hidden');
+        }, 1500);  // Match this timeout to animation duration
+    });
 });
