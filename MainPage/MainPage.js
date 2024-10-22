@@ -1,5 +1,5 @@
 // script.js
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {s
     // Hero Section for Slideshow
     const slides = document.querySelectorAll('.hero-slide');
     const dots = document.querySelectorAll('.dot');
