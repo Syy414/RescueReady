@@ -1,268 +1,447 @@
-/* General Styles */
+/* General Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
 }
 
+:root {
+  --primary-color: #e63946;
+  --secondary-color: #457b9d;
+  --text-color: #1d3557;
+  --light-bg: #f1faee;
+  --white: #ffffff;
+}
+
+/* Full-Page Video Background */
 body, html {
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-  font-family: Arial, sans-serif;
   overflow: hidden;
 }
 
-/* Grid Styles */
-.grid-container {
-  position: absolute;
+#video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(70px, 1fr));
-  gap: 1px;
-  background-color: #f8f8f8;
   z-index: 1;
-  transition: opacity 0.5s ease; /* Fade out effect for grid */
+  overflow: hidden;
 }
 
-.grid-item {
-  background-color: #f0f0f0;
-  opacity: 0.8;
-  transition: background-color 0.8s ease, opacity 0.8s ease;
+#background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* Title Styles */
-.title {
-  position: absolute;
-  z-index: 10;
-  font-size: 36px;
-  color: #000;
-  text-align: center;
-  transition: opacity 0.5s ease; /* Fade out effect for title */
+/* Main Content Display */
+/* styles.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
 }
 
-.clickable-title {
+:root {
+  --primary-color: #e63946;
+  --secondary-color: #457b9d;
+  --text-color: #1d3557;
+  --light-bg: #f1faee;
+  --white: #ffffff;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background: var(--white);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
   text-decoration: none;
-  color: inherit;
-  transition: color 0.3s ease;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: color 0.3s;
 }
 
-.clickable-title:hover {
-  color: #007BFF;
+.nav-links a:hover {
+  color: var(--primary-color);
 }
 
-/* New content styles */
-.new-content {
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
   display: none;
+  position: absolute;
+  background-color: var(--white);
+  min-width: 200px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  z-index: 1;
+  border-radius: 4px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: var(--text-color);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--light-bg);
+}
+
+.sign-up-btn {
+  background: var(--primary-color);
+  color: var(--white);
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.sign-up-btn:hover {
+  background: var(--secondary-color);
+}
+
+.hero {
+  position: relative;
+  height: 80vh;
+  background-color: var(--light-bg);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-images {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-slide {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #ffffff;
-  z-index: 3;
-  padding: 20px;
+  object-fit: cover;
   opacity: 0;
-  transition: opacity 0.8s ease;
+  transition: opacity 1s ease;
 }
 
-.show {
-  display: block;
+.hero-slide.active {
   opacity: 1;
 }
 
-/* Remove split effect styles */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f0f0f0;
-  display: flex;
-  flex-direction: column; /* Change to column layout */
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
-.container {
+.hero-content {
+  position: absolute;
+  color: var(--white);
   text-align: center;
-  padding: 20px;
-  max-width: 800px;
-  margin-bottom: 20px; /* Add margin to separate from carousel */
 }
 
-h1 {
-  color: #ff4500;
-  margin-bottom: 20px;
-  font-size: 3em;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3),
-               -2px -2px 4px rgba(255,255,255,0.7);
-  background: linear-gradient(45deg, #ff4500, #ff8c00);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: title-glow 2s ease-in-out infinite alternate;
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
-@keyframes title-glow {
-  from {
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3),
-                   -2px -2px 4px rgba(255,255,255,0.7);
-  }
-  to {
-      text-shadow: 4px 4px 8px rgba(255,69,0,0.6),
-                   -4px -4px 8px rgba(255,140,0,0.6);
-  }
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 
-.hyper-text {
-  font-size: 3em;
-  color: #ff4500; /* Base color */
-  transition: color 0.3s ease;
-  position: relative;
+.cta-button {
+  background: var(--primary-color);
+  color: var(--white);
+  padding: 0.7rem 2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.3s;
 }
 
-.hyper-text:hover {
-  animation: changeText 0.5s infinite;
-  cursor: pointer; /* Change cursor to pointer */
+.cta-button:hover {
+  background: var(--secondary-color);
 }
 
-.intro {
-  color: #333;
-  margin-bottom: 30px;
-  line-height: 1.6;
-  font-size: 1.2em;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+.search-bar {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  width: 200px;
 }
 
-.button-container {
-  display: flex;
-  justify-content: center;
+.topics {
+  padding: 5rem 5%;
+  background: var(--white);
+}
+
+.topics h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
-  flex-wrap: wrap;
 }
 
-.rainbow-button {
-  padding: 15px 25px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: white;
-  color: black;
-  border: none;
-  border-radius: 10px;
-  position: relative;
-  z-index: 0;
+.topic-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
   overflow: hidden;
-  width: 165px;
-  height: 50px;
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
+  transition: transform 0.3s;
+  display: flex; /* Use flexbox for card layout */
+  flex-direction: column; /* Stack items vertically */
 }
 
-.rainbow-button::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #8b00ff);
-  background-size: 200% 200%;
-  z-index: -1;
-  animation: moveGradient 4s linear infinite;
+.card-image {
+  width: 100%; /* Ensure the image takes full width */
+  height: 80px; /* Reduced height for the image */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
 }
 
-.rainbow-button::after {
-  content: '';
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
-  background-color: white;
-  border-radius: 3px;
-  z-index: -1;
+.card-content {
+  padding: 1rem;
+  flex-grow: 1; /* Allow this to take up remaining space */
+  display: flex; /* Use flexbox for alignment */
+  flex-direction: column; /* Stack items vertically */
+  justify-content: flex-start; /* Align items at the top */
 }
 
-.rainbow-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+.card-content p {
+  flex-grow: 1; /* Allow this to take up remaining space */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+  display: -webkit-box; /* For ellipsis effect */
+  -webkit-box-orient: vertical; /* Required for ellipsis */
+  -webkit-line-clamp: 3; /* Limit to 3 lines */
+  line-clamp: 3; /* Standard property for browsers that support it */
+  max-height: calc(3 * 1.2em); /* Adjust line height as needed (1.2em is an example) */
+  line-height: 1.2em; /* Set line height */
 }
 
-@keyframes moveGradient {
-  0% {
-      background-position: 0% 50%;
-  }
-  100% {
-      background-position: 200% 50%;
+/* Optional: ensure the content is not overflowing on small screens */
+@media (max-width: 480px) {
+  .topic-card {
+    height: auto; /* Allow height to adjust for smaller screens */
   }
 }
 
-.carousel {
-  position: fixed; /* Fixed position to stay at the bottom */
-  bottom: 0; /* Align to bottom of the viewport */
-  left: 0;
-  right: 0;
-  background-color: white; /* White background for the carousel */
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3); /* Shadow effect */
-  text-align: center;
-  padding: 10px 0; /* Padding for top and bottom */
+
+
+.read-more {
+  text-decoration: none;
+  color: var(--primary-color);
 }
 
-.carousel-buttons {
-  display: flex;
-  justify-content: center; /* Center the buttons */
-  transition: transform 0.5s ease;
-  width: 100%; /* Full width */
+.faq {
+  padding: 5rem 5%;
+  background: var(--light-bg);
 }
 
-.carousel-button {
-  flex: 1; /* Adjust width of buttons */
-  padding: 10px; /* Adjust padding */
-  background-color: #4CAF50; /* Green background */
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  display: flex; /* Use flexbox for image and text alignment */
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
+.accordion {
+  max-width: 800px;
+  margin: auto;
 }
 
-.carousel-button img {
-  width: 30px; /* Adjust icon size */
-  height: 30px; /* Adjust icon size */
-  margin-right: 10px; /* Space between icon and text */
-}
-
-.carousel-button.active {
-  background-color: #45a049; /* Darker green for active button */
-}
-
-button.prev, button.next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
+.accordion-item {
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
   border-radius: 5px;
 }
 
-button.prev {
-  left: 10px;
+.accordion-item h3 {
+  background: var(--primary-color);
+  color: var(--white);
+  padding: 1rem;
+  cursor: pointer;
+  position: relative; /* Needed for positioning plus/minus sign */
 }
 
-button.next {
-  right: 10px;
+.accordion-content {
+  padding: 1rem;
+  display: none; /* Hide content by default */
 }
 
+.accordion-item.active .accordion-content {
+  display: block; /* Show content when active */
+}
+
+.plus-minus {
+  float: right; /* Align to the right */
+  font-weight: bold;
+  font-size: 1.5rem; /* Adjust size as needed */
+  transition: transform 0.3s; /* Smooth rotation effect */
+}
+
+
+.about {
+  padding: 5rem 5%;
+  background: var(--white);
+}
+
+footer {
+  padding: 2rem 5%;
+  background: var(--primary-color);
+  color: var(--white);
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.footer-section {
+  flex: 1;
+}
+
+.footer-section h3 {
+  margin-bottom: 1rem;
+}
+
+.footer-section a {
+  color: var(--white);
+  text-decoration: none;
+  display: block;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+.social-links a {
+  margin-right: 1rem;
+  color: var(--white);
+}
+
+.footer-bottom {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Dots Navigation */
+/* Dots Navigation */
+.navigation-dots {
+  position: absolute;
+  bottom: -230px; /* Adjust this value to move the dots higher or lower */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px; /* Space between dots */
+  z-index: 10; /* Ensure dots are above other elements */
+}
+
+.dot {
+  height: 12px; /* Adjust size as needed */
+  width: 12px; /* Adjust size as needed */
+  background-color: #bbb; /* Default dot color */
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot.active {
+  background-color: var(--primary-color); /* Active dot color */
+}
+
+.hidden {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.reveal-animation {
+  animation: zoomIn 1.5s forwards;
+}
+
+@keyframes zoomIn {
+  0% {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+  }
+  100% {
+      opacity: 0;
+      transform: scale(1.5);
+  }
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .quiz-container {
+      width: 90%; /* Make it more flexible */
+      margin: 10px auto; /* Center with margin */
+      height: auto; /* Allow height to adjust based on content */
+      padding: 20px; /* Adjust padding for smaller screens */
+  }
+
+  /* Adjust question container and button sizes */
+  .question-container {
+      height: auto; /* Allow height to adjust based on content */
+      margin: 5px 0; /* Less margin for mobile */
+  }
+
+  .option-container {
+      gap: 30px; /* Reduce gap between buttons on mobile */
+  }
+
+  .option-btn {
+      padding: 12px; /* Smaller padding for mobile */
+      font-size: 14px; /* Smaller font size for mobile */
+  }
+
+  h2 {
+      font-size: 24px; /* Adjust heading size */
+      margin: 15px 0; /* Less margin */
+  }
+}
+
+/* Additional styles for layout consistency */
+@media (max-width: 480px) {
+  .sidebar {
+      width: 100%; /* Sidebar full width on small screens */
+      height: auto; /* Allow height to adjust */
+  }
+}
+
+body {
+  overflow-y: auto;  /* Ensure vertical scrolling is enabled */
+}
+
+html {
+  overflow-y: auto;  /* Ensure vertical scrolling is enabled */
+}
